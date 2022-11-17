@@ -12,6 +12,12 @@ namespace Distance.LittleThings
             get { return Get<bool>("EnableGPSInArcade"); }
             set { Set("EnableGPSInArcade", value); }
         }
+
+        public bool EnableQuarantineInArcade
+        {
+            get { return Get<bool>("EnableQuarantineInArcade"); }
+            set { Set("EnableQuarantineInArcade", value); }
+        }
         #endregion
 
         internal Settings Config;
@@ -28,7 +34,8 @@ namespace Distance.LittleThings
         {
             Load();
             //Setting Defaults
-            Get("EnableGPSInArcade", false);
+            Get("EnableGPSInArcade", true);
+            Get("EnableQuarantineInArcade", true);
             //Save settings to Config.json
             Save();
         }

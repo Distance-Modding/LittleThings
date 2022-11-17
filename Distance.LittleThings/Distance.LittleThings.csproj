@@ -40,6 +40,9 @@
     <Reference Include="Assembly-CSharp, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Centrifuge.GameSupport.Distance.3.0.7868.41513\lib\net35\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>D:\Games\Steam2\steamapps\common\Distance\Distance_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="Centrifuge.Distance, Version=3.0.7868.41513, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Centrifuge.GameSupport.Distance.3.0.7868.41513\lib\net35\Centrifuge.Distance.dll</HintPath>
     </Reference>
@@ -90,6 +93,7 @@
     <Compile Include="ConfigLogic.cs" />
     <Compile Include="Harmony\Assembly-CSharp\GPSTrigger\Start.cs" />
     <Compile Include="Harmony\Assembly-CSharp\LocalPlayerControlledCar\CheckInput.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\QuarantineTrigger\Start.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

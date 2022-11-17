@@ -87,6 +87,11 @@ namespace Distance.LittleThings
                 .WithGetter(() => Config.EnableGPSInArcade)
                 .WithSetter((x) => Config.EnableGPSInArcade = x)
                 .WithDescription("Toggles whether Minimap will become available to use in Arcade Mode. (GPS Triggers will also activate in arcade)"),
+
+                new CheckBox(MenuDisplayMode.Both, "settings::quarantine_arcade", "ENABLE QUARANTINE ZONES IN ARCADE")
+                .WithGetter(() => Config.EnableQuarantineInArcade)
+                .WithSetter((x) => Config.EnableQuarantineInArcade = x)
+                .WithDescription("Toggles whether Quarantine zones will activate in arcade mode"),
             };
 
             Menus.AddNew(MenuDisplayMode.Both, settingsMenu, "LITTLE THINGS", "Settings for the LittleThings mod");
