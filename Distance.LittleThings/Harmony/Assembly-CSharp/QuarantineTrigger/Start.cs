@@ -3,7 +3,7 @@
 namespace Distance.LittleThings.Harmony
 {
     [HarmonyPatch(typeof(QuarantineTrigger), "Start")]
-    internal class Start
+    internal class QuarantineTrigger__Start
     {
         [HarmonyPrefix]
         internal static bool StartRewrite(QuarantineTrigger __instance)

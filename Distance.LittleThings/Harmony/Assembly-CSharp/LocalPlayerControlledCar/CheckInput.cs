@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Distance.LittleThings.Harmony
 {
     [HarmonyPatch(typeof(LocalPlayerControlledCar), "CheckInput")]
-    internal class CheckInput
+    internal class LocalPlayerControlledCar__CheckInput
     {
         [HarmonyPrefix]
         internal static bool GPSCheck(LocalPlayerControlledCar __instance, InputStates inputStates, float dt)

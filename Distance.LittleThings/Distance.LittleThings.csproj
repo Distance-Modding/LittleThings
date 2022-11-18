@@ -91,8 +91,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigLogic.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\CarScreenLogic\OnEventGo.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\CarScreenLogic\UpdateBeforeRender.cs" />
     <Compile Include="Harmony\Assembly-CSharp\GPSTrigger\Start.cs" />
     <Compile Include="Harmony\Assembly-CSharp\LocalPlayerControlledCar\CheckInput.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\LocalPlayerControlledCar\Start.cs" />
     <Compile Include="Harmony\Assembly-CSharp\QuarantineTrigger\Start.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -18,6 +18,18 @@ namespace Distance.LittleThings
             get { return Get<bool>("EnableQuarantineInArcade"); }
             set { Set("EnableQuarantineInArcade", value); }
         }
+
+        public bool EnableHeadLights
+        {
+            get { return Get<bool>("EnableHeadLights"); }
+            set { Set("EnableHeadLights", value); }
+        }
+
+        public bool ActiveCompass
+        {
+            get { return Get<bool>("ActiveCompass"); }
+            set { Set("ActiveCompass", value); }
+        }
         #endregion
 
         internal Settings Config;
@@ -36,6 +48,8 @@ namespace Distance.LittleThings
             //Setting Defaults
             Get("EnableGPSInArcade", true);
             Get("EnableQuarantineInArcade", true);
+            Get("EnableHeadLights", false);
+            Get("ActiveCompass", false);
             //Save settings to Config.json
             Save();
         }

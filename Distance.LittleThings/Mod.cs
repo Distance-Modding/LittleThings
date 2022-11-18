@@ -92,6 +92,16 @@ namespace Distance.LittleThings
                 .WithGetter(() => Config.EnableQuarantineInArcade)
                 .WithSetter((x) => Config.EnableQuarantineInArcade = x)
                 .WithDescription("Toggles whether Quarantine zones will activate in arcade mode"),
+
+                new CheckBox(MenuDisplayMode.Both, "settings::headlights_enable", "ENABLE HEADLIGHTS")
+                .WithGetter(() => Config.EnableHeadLights)
+                .WithSetter((x) => Config.EnableHeadLights = x)
+                .WithDescription("Toggles whether head lights are always active on the car, just like the Beta days!"),
+
+                new CheckBox(MenuDisplayMode.Both, "settings::active_compass", "PERMANENT COMPASS")
+                .WithGetter(() => Config.ActiveCompass)
+                .WithSetter((x) => Config.ActiveCompass = x)
+                .WithDescription("The compass will always stay active on the carscreen and never change"),
             };
 
             Menus.AddNew(MenuDisplayMode.Both, settingsMenu, "LITTLE THINGS", "Settings for the LittleThings mod");
