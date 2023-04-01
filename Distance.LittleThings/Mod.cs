@@ -24,6 +24,8 @@ namespace Distance.LittleThings
 
         public ConfigLogic Config { get; private set; }
 
+        public AudioManager audioManager { get; set; }
+
         /// <summary>
         /// Method called as soon as the mod is loaded.
         /// WARNING:	Do not load asset bundles/textures in this function
@@ -79,6 +81,23 @@ namespace Distance.LittleThings
             }
         }
 
+        /*private void Update()
+        {
+            if (Input.anyKey)
+            {
+                if (Input.GetKey(KeyCode.O))
+                    audioManager.lowPassFreq_ += 10;
+                if (Input.GetKey(KeyCode.P))
+                    audioManager.lowPassFreq_ -= 10;
+                if (Input.GetKey(KeyCode.K))
+                    audioManager.highPassFreq_ += 1;
+                if (Input.GetKey(KeyCode.L))
+                    audioManager.highPassFreq_ -= 1;
+
+                audioManager.SetCustomMusicDSP(audioManager.lowPassFreq_, audioManager.highPassFreq_, false);
+            }
+        }*/
+
         private void CreateSettingsMenu()
         {
             MenuTree settingsMenu = new MenuTree("menu.mod.littlethings", "Little Thing Settings")
@@ -102,6 +121,11 @@ namespace Distance.LittleThings
                 .WithGetter(() => Config.ActiveCompass)
                 .WithSetter((x) => Config.ActiveCompass = x)
                 .WithDescription("The compass will always stay active on the carscreen and never change"),
+
+                new CheckBox(MenuDisplayMode.Both, "settings::enable_lowpass", "ENABLE CUSTOM LOWPASS FILTERS")
+                .WithGetter(() => Config.EnableCustomLowpass)
+                .WithSetter((x) => Config.EnableCustomLowpass = x)
+                .WithDescription("Toggles whether or not lowpass filters get applied to custom music."),
             };
 
             Menus.AddNew(MenuDisplayMode.Both, settingsMenu, "LITTLE THINGS", "Settings for the LittleThings mod");
@@ -111,7 +135,32 @@ namespace Distance.LittleThings
         {
 
         }
-	}
+        
+        public System.Collections.IEnumerator CustomMusicDSP(float lowpassEnd, float timer)
+        {
+            if (audioManager == null)
+                yield break;
+
+            if (audioManager.sampleAggregator_ == null || !audioManager.audioSettings_.AffectedByGameplay_)
+                yield break;
+
+            if (audioManager.lowPassFreq_.ApproxEquals(lowpassEnd))
+                yield break;
+
+            float startLowFreq = (float)Math.Log10((double)audioManager.lowPassFreq_);
+            float endLowFreq = (float)Math.Log10((double)lowpassEnd);
+            float time = 0f;
+            while (time < timer)
+            {
+                audioManager.lowPassFreq_ = (float)Math.Pow(10.0, (double)Mathf.Lerp(startLowFreq, endLowFreq, time / timer));
+                audioManager.SetCustomMusicDSP(audioManager.lowPassFreq_, audioManager.highPassFreq_, false);
+                time += Time.deltaTime;
+                yield return null;
+            }
+            audioManager.SetCustomMusicDSP((float)Math.Pow(10.0, (double)endLowFreq), -1f, false);
+            yield break;
+        }
+    }
 }
 
 

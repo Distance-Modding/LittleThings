@@ -91,6 +91,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigLogic.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\AudioManager\PostEvent.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\AudioManager\SetCustomMusicDSP.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\AudioManager\SetRTPCValue.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\AudioManager\Update.cs" />
+    <Compile Include="Harmony\Assembly-CSharp\AudioManager\SetState.cs" />
     <Compile Include="Harmony\Assembly-CSharp\CarScreenLogic\OnEventGo.cs" />
     <Compile Include="Harmony\Assembly-CSharp\CarScreenLogic\UpdateBeforeRender.cs" />
     <Compile Include="Harmony\Assembly-CSharp\GPSTrigger\Start.cs" />

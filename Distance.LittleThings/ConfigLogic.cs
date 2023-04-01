@@ -30,6 +30,12 @@ namespace Distance.LittleThings
             get { return Get<bool>("ActiveCompass"); }
             set { Set("ActiveCompass", value); }
         }
+
+        public bool EnableCustomLowpass
+        {
+            get { return Get<bool>("EnableCustomLowpass"); }
+            set { Set("EnableCustomLowpass", value); }
+        }
         #endregion
 
         internal Settings Config;
@@ -50,6 +56,7 @@ namespace Distance.LittleThings
             Get("EnableQuarantineInArcade", true);
             Get("EnableHeadLights", false);
             Get("ActiveCompass", false);
+            Get("EnableCustomLowpass", true);
             //Save settings to Config.json
             Save();
         }
