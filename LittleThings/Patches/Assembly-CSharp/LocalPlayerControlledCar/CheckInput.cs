@@ -1,8 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
 
-
-namespace Distance.LittleThings.Harmony
+namespace LittleThings.Patches
 {
     [HarmonyPatch(typeof(LocalPlayerControlledCar), "CheckInput")]
     internal class LocalPlayerControlledCar__CheckInput
@@ -10,7 +9,7 @@ namespace Distance.LittleThings.Harmony
         [HarmonyPrefix]
         internal static bool GPSCheck(LocalPlayerControlledCar __instance, InputStates inputStates, float dt)
         {
-            if (Mod.Instance.Config.EnableGPSInArcade)
+            if (Mod.EnableGPSInArcade.Value)
             {
                 if ((Object)__instance.playerDataLocal_ == (Object)null || !__instance.playerDataLocal_.CarInputEnabled_)
                     return false;

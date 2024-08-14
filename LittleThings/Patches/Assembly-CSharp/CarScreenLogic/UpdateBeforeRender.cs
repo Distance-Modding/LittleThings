@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Distance.LittleThings.Harmony
+namespace LittleThings.Patches
 {
     [HarmonyPatch(typeof(CarScreenLogic), "UpdateBeforeRender")]
     internal class CarScreenLogic__UpdateBeforeRender
@@ -8,10 +8,10 @@ namespace Distance.LittleThings.Harmony
         [HarmonyPostfix]
         internal static void KeepCompassActive(CarScreenLogic __instance)
         {
-           if(Mod.Instance.Config.ActiveCompass)
-           {
+            if (Mod.ActiveCompass.Value)
+            {
                 __instance.SetCurrentModeVisual(__instance.compass_);
-           }
+            }
         }
     }
 }

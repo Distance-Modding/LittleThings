@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Distance.LittleThings.Harmony
+namespace LittleThings.Patches
 {
     [HarmonyPatch(typeof(AudioManager), "PostEvent", new System.Type[] { typeof(string) })]
     internal class AudioManager__PostEvent1
@@ -8,7 +8,7 @@ namespace Distance.LittleThings.Harmony
         [HarmonyPostfix]
         internal static void CheckCustomDSP(string eventName)
         {
-            if (Mod.Instance.Config.EnableCustomLowpass)
+            if (Mod.EnableCustomLowpass.Value)
             {
                 AudioManager audioManager;
                 if (Mod.Instance.audioManager != null)
@@ -24,12 +24,14 @@ namespace Distance.LittleThings.Harmony
                         if (audioManager.customMusicLowPass_ != null)
                             audioManager.StopCoroutine(audioManager.customMusicLowPass_);
 
-                        audioManager.SetCustomMusicDSP(.01f, AudioManager.highPassFreqDefault_);
-                        audioManager.customMusicLowPass_ = audioManager.StartCoroutine(Mod.Instance.CustomMusicDSP(AudioManager.lowPassFreqDefault_, 2f));
+                        audioManager.customMusicLowPass_ = audioManager.StartCoroutine(Mod.Instance.EMPCusmtomMusicDSP());
                         return;
                     }
                     if (eventName == "Set_Car_Low_Pass_Filter_Off")
                     {
+                        if (audioManager.customMusicLowPass_ != null)
+                            audioManager.StopCoroutine(audioManager.customMusicLowPass_);
+
                         audioManager.SetCustomMusicDSP(AudioManager.lowPassFreqDefault_, AudioManager.highPassFreqDefault_);
                     }
                 }

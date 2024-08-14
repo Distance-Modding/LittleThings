@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Distance.LittleThings.Harmony
+namespace LittleThings.Patches
 {
     [HarmonyPatch(typeof(AudioManager), "Update")]
     internal class AudioManager__Update
@@ -9,7 +9,7 @@ namespace Distance.LittleThings.Harmony
         internal static void LiterallyJustGettingTheAudioManager(AudioManager __instance)
         {
             Mod.Instance.audioManager = __instance;
-            //Mod.Instance.Logger.Debug("DSP Freaks: " + __instance.lowPassFreq_ + " " + __instance.highPassFreq_);
+            //Mod.Log.LogInfo("DSP Freaks: " + __instance.lowPassFreq_ + " " + __instance.highPassFreq_);
         }
     }
 }

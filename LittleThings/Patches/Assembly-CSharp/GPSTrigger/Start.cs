@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Distance.LittleThings.Harmony
+namespace LittleThings.Patches
 {
     [HarmonyPatch(typeof(GPSTrigger), "Start")]
     internal class GPSTrigger__Start
@@ -9,7 +9,7 @@ namespace Distance.LittleThings.Harmony
         internal static bool GPSCheck()
         {
             //If GPS is enabled, go with this option in arcade. GPS Triggers will activate
-            if(Mod.Instance.Config.EnableGPSInArcade)
+            if (Mod.EnableGPSInArcade.Value)
             {
                 return false;
             }

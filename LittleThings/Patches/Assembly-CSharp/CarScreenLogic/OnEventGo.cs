@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Distance.LittleThings.Harmony
+namespace LittleThings.Patches
 {
     [HarmonyPatch(typeof(CarScreenLogic), "OnEventGo")]
     internal class CarScreenLogic__OnEventGo
@@ -8,7 +8,7 @@ namespace Distance.LittleThings.Harmony
         [HarmonyPrefix]
         internal static bool DisablePlacementText(CarScreenLogic __instance)
         {
-            if (Mod.Instance.Config.ActiveCompass)
+            if (Mod.ActiveCompass.Value)
             {
                 //Literally just skip the method if active compass is on
                 __instance.ModeWidgetVisible_ = true;

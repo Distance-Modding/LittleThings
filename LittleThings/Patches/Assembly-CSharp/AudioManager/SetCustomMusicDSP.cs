@@ -1,6 +1,6 @@
 ﻿using HarmonyLib;
 
-namespace Distance.LittleThings.Harmony
+namespace LittleThings.Patches
 {
     [HarmonyPatch(typeof(AudioManager), "SetCustomMusicDSP", new System.Type[] { typeof(float), typeof(float), typeof(bool) })]
     internal class AudioManaher__SetCustomMusicDSP
@@ -8,7 +8,7 @@ namespace Distance.LittleThings.Harmony
         [HarmonyPostfix]
         internal static void CheckingIfItIsCalled(float lowPassFreq, float highPassFreq, bool forceUpdate)
         {
-            //Mod.Instance.Logger.Debug("DSP Freaks: " + lowPassFreq + " " + highPassFreq);
+            //Mod.Log.LogInfo("DSP Freaks: " + lowPassFreq + " " + highPassFreq);
         }
     }
 }
